@@ -3,7 +3,7 @@ import axios from 'axios'
 import Tilt from 'react-parallax-tilt'
 import baseUrl from './utils/baseUrl.js'
 import { useState, useEffect } from 'react'
-//import rankColors from './utils/rankColors.js'
+import Modal from './components/Modal.jsx'
 
 function App() {
 
@@ -11,6 +11,7 @@ function App() {
   const [name, setName] = useState('')
   const [code, setCode] = useState('')
   const [currentColor, setCurrentColor] = useState('')
+  const [isModalVisible, setIsModalVisible] = useState(false)
 
   async function getCardStats() {
 
@@ -27,14 +28,24 @@ function App() {
       }
 
       const response = await axios.get(`${baseUrl.localhost}/mvp/get-card-data/${name}/${code}`)
-      setCardStats(response.data?.playerCard)
       setCode('')
       setName('')
 
+      if (response.data?.message) {
+        setIsModalVisible(true)
+        return
+      }
+
+      setCardStats(response.data?.playerCard)
+      
     } catch (error) {
       console.error(error)
     }
 
+  }
+
+  function closeModal() {
+    setIsModalVisible(false)
   }
 
   useEffect(() => {
@@ -53,7 +64,7 @@ function App() {
         setCurrentColor('#e6bc5c')
       } else if (overall > 75 && overall <= 85) {
         setCurrentColor('#5ee790')
-      } else if (overall > 85 && overall <= 88 ) {
+      } else if (overall > 85 && overall <= 88) {
         setCurrentColor('#3ecbff')
       } else if (overall > 88) {
         setCurrentColor('#f53c3d')
@@ -178,6 +189,10 @@ function App() {
             </div>
           </div>
         </div>
+        <Modal
+          isVisible={isModalVisible}
+          closeModal={closeModal}
+        />
       </main>
     </>
   )
