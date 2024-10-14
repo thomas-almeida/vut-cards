@@ -31,13 +31,13 @@ function App() {
       setCode('')
       setName('')
 
-      if (response.data?.message) {
+      if (!response.data?.playerCard) {
         setIsModalVisible(true)
         return
       }
 
       setCardStats(response.data?.playerCard)
-      
+
     } catch (error) {
       console.error(error)
     }
@@ -117,8 +117,11 @@ function App() {
                 Criar minha carta
               </button>
               <br />
-              <button className='p-1 py-3 border w-[100%] my-2 rounded-md font-semibold text-lg transition hover:scale-[1.035]'>
-                Já Tenho Conta
+              <button className='flex justify-center items-center p-1 py-3 border w-[100%] my-2 rounded-md font-semibold text-lg transition hover:scale-[1.035]'>
+                <p>
+                  Já Tenho Conta
+                </p>
+                <img src="/arrow.png" className='w-[12px] ml-2' alt="" />
               </button>
             </div>
             <div className='ml-16'>
@@ -152,7 +155,10 @@ function App() {
                         className='w-[160px] mb-4 mt-14 transition hover:scale-[1.1] rounded-xl'
                       />
                     </div>
-                    <h2 className='text-center font-semibold'>{!cardStats?.name ? 'Seu Nome Aqui' : cardStats?.name}</h2>
+                    <h2 className='text-center font-semibold flex justify-center items-center'>
+                      <img src="/flag.png" className='w-[22px] mr-1' alt="" />
+                      {!cardStats?.name ? 'Seu Nome Aqui' : cardStats?.name}
+                    </h2>
                     <h3 className='text-center font-light text-sm'>
                       {!cardStats?.rank?.metadata?.tierName ? 'Seu ELo' : cardStats?.rank?.metadata?.tierName}
                     </h3>
