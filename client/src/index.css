@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.card .card__glare {
+    background-image: radial-gradient(
+        farthest-corner circle at var(--mx) var(--my),
+        rgba(222, 245, 250, 0.7) 10%,
+        rgba(255, 255, 255, 0.5) 20%,
+        rgba(0, 0, 0, 0.5) 90%
+    );
+}
