@@ -62,9 +62,19 @@ async function getUserTrackerData(req, res) {
 
         // <pre> tag content extract
         const preContent = await page.$$eval('pre', elements => elements.map(el => el.textContent))
+        const preContentParsed = JSON.parse(preContent)
+        
+        // if account is private
+        if (preContentParsed?.errors) {
+            console.log(preContentParsed?.errors?.message)
+            res.status(200).json({
+                message: preContentParsed?.errors[0]?.message
+            })
+            return
+        }
 
         // get card overall
-        const cardData = JSON.parse(preContent)?.data?.segments[0]
+        const cardData = preContentParsed?.data?.segments[0]
         const actualRW = cardData?.stats?.roundsWinPct?.value?.toFixed(1)
         const actualKAST = cardData?.stats?.kAST?.value?.toFixed(1)
         const actualACS = cardData?.stats?.scorePerRound?.value?.toFixed(1)
