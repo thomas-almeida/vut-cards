@@ -1,4 +1,4 @@
-import api from "./routes"
+import api from "./routes.js"
 
 import express from "express"
 import cors from "cors"

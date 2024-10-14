@@ -59,3 +59,7 @@ async function signUp(req, res) {
         return res.status(500).json({ message: 'internal server error' })
     }
 }
+
+export default {
+    signUp
+}
