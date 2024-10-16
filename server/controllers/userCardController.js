@@ -1,5 +1,6 @@
 import puppeteer from 'puppeteer-extra'
 import StealthPlugin from 'puppeteer-extra-plugin-stealth'
+import colorizeCard from '../utils/pre-colorize.js'
 
 puppeteer.use(StealthPlugin())
 
@@ -106,6 +107,7 @@ async function getUserTrackerData(req, res) {
 
         const card = {
             overall: calcOverall(actualRW, actualKAST, actualACS, actualDDA),
+            color: colorizeCard(calcOverall(actualRW, actualKAST, actualACS, actualDDA)),
             RW: actualRW,
             KAST: actualKAST,
             ACS: actualACS,
