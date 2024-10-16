@@ -1,1 +1,65 @@
-{}
+[
+  {
+    "card": {
+      "overall": "48",
+      "RW": "51.1",
+      "KAST": "68.1",
+      "ACS": "192.4",
+      "DDA": "-4.1"
+    },
+    "agent": {
+      "agent": {
+        "name": "Clove",
+        "imageUrl": "https://titles.trackercdn.com/valorant-api/agents/1dbf2edd-4729-0984-3115-daa5eed44993/displayicon.png",
+        "role": "Controller",
+        "color": "#cd4dfd",
+        "abilities": {
+          "Grenade": {
+            "name": "Pick-me-up",
+            "imageUrl": "https://titles.trackercdn.com/valorant-api/agents/1dbf2edd-4729-0984-3115-daa5eed44993/abilities/grenade/displayicon.png"
+          },
+          "Ability2": {
+            "name": "Ruse",
+            "imageUrl": "https://titles.trackercdn.com/valorant-api/agents/1dbf2edd-4729-0984-3115-daa5eed44993/abilities/ability2/displayicon.png"
+          },
+          "Ultimate": {
+            "name": "Not Dead Yet",
+            "imageUrl": "https://titles.trackercdn.com/valorant-api/agents/1dbf2edd-4729-0984-3115-daa5eed44993/abilities/ultimate/displayicon.png"
+          },
+          "Ability1": {
+            "name": "Meddle",
+            "imageUrl": "https://titles.trackercdn.com/valorant-api/agents/1dbf2edd-4729-0984-3115-daa5eed44993/abilities/ability1/displayicon.png"
+          }
+        },
+        "schema": "statsv2"
+      },
+      "stats": 5
+    },
+    "name": "ATB Poze#RDB",
+    "rank": {
+      "displayName": "Rating",
+      "category": "mmr",
+      "metadata": {
+        "iconUrl": "https://trackercdn.com/cdn/tracker.gg/valorant/icons/tiersv2/19.png",
+        "tierName": "Diamond 2"
+      },
+      "value": null,
+      "displayValue": "",
+      "displayType": "String"
+    },
+    "trackerOv": {
+      "displayName": "Performance Score",
+      "metadata": {
+        "stats": [
+          "roundsWinPct",
+          "kAST",
+          "scorePerRound",
+          "damageDeltaPerRound"
+        ]
+      },
+      "value": 375,
+      "displayValue": "375",
+      "displayType": "Number"
+    }
+  }
+]

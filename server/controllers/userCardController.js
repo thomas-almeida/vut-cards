@@ -3,6 +3,13 @@ import StealthPlugin from 'puppeteer-extra-plugin-stealth'
 
 puppeteer.use(StealthPlugin())
 
+import fs from 'fs'
+import path from 'path'
+import { fileURLToPath } from 'url'
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+const dbPath = path.join(__dirname, '..', 'db', 'beta-users.json')
+
 function calcOverall(RW, KAST, ACS, DDA) {
 
     let overall = 0
@@ -12,6 +19,11 @@ function calcOverall(RW, KAST, ACS, DDA) {
     let DDACalc = ((DDA / 200) * 1000) * 0.13
 
     overall = RwCalc + KASTCalc + ACSCalc + DDACalc
+
+    if (overall > 99) {
+        overall = 99
+    }
+
     return overall.toFixed(0)
 }
 
@@ -47,6 +59,18 @@ function getMostPlayedAgent(agents) {
 }
 
 async function getUserTrackerData(req, res) {
+
+    let alfaUsers = []
+
+    if (!fs.existsSync(dbPath)) {
+        fs.writeFileSync(dbPath, '[]')
+    }
+
+    if (fs.existsSync(dbPath)) {
+        const data = fs.readFileSync(dbPath, 'utf-8')
+        alfaUsers = data ? JSON.parse(data) : []
+    }
+
     const { name, code } = req.params
     const encodedName = encodeURIComponent(name)
     const encodedCode = encodeURIComponent(code)
@@ -63,7 +87,7 @@ async function getUserTrackerData(req, res) {
         // <pre> tag content extract
         const preContent = await page.$$eval('pre', elements => elements.map(el => el.textContent))
         const preContentParsed = JSON.parse(preContent)
-        
+
         // if account is private
         if (preContentParsed?.errors) {
             console.log(preContentParsed?.errors?.message)
@@ -92,16 +116,27 @@ async function getUserTrackerData(req, res) {
 
         await browser.close()
 
+        let playerCard = {
+            card: card,
+            agent: getMostPlayedAgent(agents),
+            name: JSON.parse(preContent)?.data?.platformInfo?.platformUserHandle,
+            rank: cardData?.stats?.rank,
+            trackerOv: cardData?.stats?.trnPerformanceScore,
+        }
+
         res.status(200).json({
             message: 'success',
-            playerCard: {
-                card: card,
-                agent: getMostPlayedAgent(agents),
-                name: JSON.parse(preContent)?.data?.platformInfo?.platformUserHandle,
-                rank: cardData?.stats?.rank,
-                trackerOv: cardData?.stats?.trnPerformanceScore,
-            }
+            playerCard: playerCard
         })
+
+        const playerExist = alfaUsers.some(player => player.name === `${name}#${code}`)
+
+        if (!playerExist) {
+            alfaUsers.push(playerCard)
+            fs.writeFileSync(dbPath, JSON.stringify(alfaUsers, null, 2))
+            console.log(`✅ Player ${playerCard.name} create your own card`)
+        }
+
     } catch (error) {
         console.error(error)
         res.status(500).json({
@@ -111,6 +146,32 @@ async function getUserTrackerData(req, res) {
     }
 }
 
+async function getAlfaUsers(req, res) {
+    try {
+
+        let alfaUsers = []
+
+        if (!fs.existsSync(dbPath)) {
+            fs.writeFileSync(dbPath, '[]')
+        }
+
+        if (fs.existsSync(dbPath)) {
+            const data = fs.readFileSync(dbPath, 'utf-8')
+            alfaUsers = data ? JSON.parse(data) : []
+        }
+
+        res.status(200).json({
+            message: 'success',
+            players: alfaUsers
+        })
+
+    } catch (error) {
+        console.error(error)
+
+    }
+}
+
 export default {
     getUserTrackerData,
+    getAlfaUsers
 }
