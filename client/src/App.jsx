@@ -2,9 +2,9 @@
 import axios from 'axios'
 import Tilt from 'react-parallax-tilt'
 import baseUrl from './utils/baseUrl.js'
-import { useState, useEffect } from 'react'
-import { NavLink } from 'react-router-dom'
+import { useState, useEffect, useRef } from 'react'
 import Modal from './components/Modal.jsx'
+import html2canvas from 'html2canvas'
 
 function App() {
 
@@ -15,6 +15,8 @@ function App() {
   const [isModalVisible, setIsModalVisible] = useState(false)
   const [isFetching, setIsFetching] = useState(false)
   const [alfaUsers, setAlfaUsers] = useState([])
+
+  const cardRef = useRef(null)
 
   async function getCardStats() {
 
@@ -28,7 +30,7 @@ function App() {
       setIsFetching(true)
 
       if (code.includes('#')) {
-        alert('retire a #')
+        alert('Retire a #')
         return
       }
 
@@ -44,6 +46,8 @@ function App() {
 
       setCardStats(response.data?.playerCard)
       setIsFetching(false)
+      getAlfaUsers()
+
 
     } catch (error) {
       console.error(error)
@@ -58,43 +62,30 @@ function App() {
     setIsModalVisible(false)
   }
 
-  useEffect(() => {
+  async function getAlfaUsers() {
+    const response = await axios.get(`${baseUrl.localhost}/mvp/get-alfa-testers`)
+    setAlfaUsers(response.data?.players)
+  }
 
-    async function getAlfaUsers() {
-      const response = await axios.get(`${baseUrl.localhost}/mvp/get-alfa-testers`)
-      setAlfaUsers(response.data?.players)
-    }
+  async function saveCard() {
+
+    const element = cardRef.current
+
+    html2canvas(element).then(canvas => {
+      const imgData = canvas.toDataURL('image/png')
+      const link = document.createElement('a')
+      link.href = imgData
+      link.download = 'vut-card.png'
+      link.click()
+    })
+  }
+
+
+  useEffect(() => {
 
     getAlfaUsers()
 
   }, [])
-
-  useEffect(() => {
-
-    function colorizeCard(overall) {
-
-      console.log(overall, currentColor)
-
-      if (overall === undefined) {
-        setCurrentColor('#f53c3d')
-      } else if (overall <= 30) {
-        setCurrentColor('#bf868f')
-      } else if (overall > 30 && overall <= 50) {
-        setCurrentColor('#a7c6cc')
-      } else if (overall > 50 && overall <= 75) {
-        setCurrentColor('#e6bc5c')
-      } else if (overall > 75 && overall <= 85) {
-        setCurrentColor('#5ee790')
-      } else if (overall > 85 && overall <= 88) {
-        setCurrentColor('#3ecbff')
-      } else if (overall > 88) {
-        setCurrentColor('#f53c3d')
-      }
-    }
-
-    colorizeCard(cardStats?.card?.overall)
-
-  }, [cardStats])
 
   return (
     <>
@@ -154,8 +145,9 @@ function App() {
             <div className='ml-24'>
               <Tilt>
                 <div
+                  ref={cardRef}
                   style={{
-                    borderColor: currentColor,
+                    borderColor: !cardStats?.card?.color ? '#f53c3d' : cardStats?.card?.color,
                     WebkitBoxShadow: '0px 0px 136px 1px rgba(187,240,224,0.21)',
                     MozBoxShadow: '0px 0px 136px 1px 0px 0px 136px 1px',
                     boxShadow: '0px 0px 136px 1px rgba(187,240,224,0.21)'
@@ -163,7 +155,7 @@ function App() {
                   className={`border-4 h-[460px] w-[300px] rounded-s-xl rounded-e-xl rounded-tr-none rounded-es-none cursor-pointer transition hover:scale-[1.08] relative flex justify-center items-center shadow-lg bg-[#10101091] card card__glare`}
                 >
                   <div
-                    style={{ borderColor: currentColor }}
+                    style={{ borderColor: !cardStats?.card?.color ? '#f53c3d' : cardStats?.card?.color }}
                     className={`absolute top-6 left-6 border-2 p-2 px-3 rounded-sm rounded-s-xl rounded-e-xl rounded-tr-none rounded-es-none transition hover:scale-[1.1]`}>
                     <b className='text-xl'>{!cardStats?.card?.overall ? ' ?? ' : cardStats?.card?.overall}</b>
                   </div>
@@ -219,33 +211,34 @@ function App() {
                 </div>
               </Tilt>
               <p
-                className={cardStats?.card && currentColor !== '' ? `font-bold py-2 cursor-pointer transition hover:scale-[1.03] mt-5 text-center rounded-md border-2 border-[#ffffff54] bg-[#ffffff54] text-[#ffffff] ` : 'hidden'}
+                className={cardStats?.card ? `font-bold py-2 cursor-pointer transition hover:scale-[1.03] mt-5 text-center rounded-md border-2 border-[#ffffff54] bg-[#ffffff54] text-[#ffffff] ` : 'hidden'}
+                onClick={() => saveCard()}
               >
                 Salvar Carta
               </p>
             </div>
           </div>
         </div>
-        <div className='p-6 mt-14 w-[70%]'>
-          <div className='text-center flex justify-center py-4'>
-            <h2 className='w-[40%] border rounded-md border-[#ffffff54] bg-[#ffffff1e] text-[#ffffff] font-semibold'>
+        <div className='p-6 mt-14 w-[80%]'>
+          <div className='text-center flex justify-center pb-4'>
+            <h2 className='w-[30%] border rounded-md border-[#ffffff54] bg-[#ffffff1e] text-[#ffffff] font-semibold'>
               Jogadores que evoluiram suas cartas
             </h2>
           </div>
 
           <div className='p-4'>
-            <div className='flex justify-center items-center'>
+            <div className='grid grid-flow-col-dense grid-cols-7 justify-center items-center border-4 border-[#dddddd29] bg-[#2a2a2a1f] p-6 rounded-md shadow-black shadow-md'>
               {
                 alfaUsers.map((player) => (
                   <Tilt>
                     <div
                       style={{
-                        borderColor: currentColor,
+                        borderColor: player.card?.color,
                       }}
-                      className={`border-4 h-[460px] w-[300px] rounded-s-xl rounded-e-xl rounded-tr-none rounded-es-none cursor-pointer transition hover:scale-[1.03] relative flex justify-center items-center shadow-lg bg-[#10101091] card card__glare`}
+                      className={`border-4 h-[400px] w-[260px] rounded-s-xl rounded-e-xl rounded-tr-none rounded-es-none cursor-pointer relative transition hover:scale-[1.04] hover:top-[-80px] hover:left-[-90px] flex justify-center items-center shadow-lg bg-[#101010] card card__glare my-4`}
                     >
                       <div
-                        style={{ borderColor: currentColor }}
+                        style={{ borderColor: player.card?.color }}
                         className={`absolute top-6 left-6 border-2 p-2 px-3 rounded-sm rounded-s-xl rounded-e-xl rounded-tr-none rounded-es-none transition hover:scale-[1.1]`}>
                         <b className='text-xl'>{player?.card?.overall}</b>
                       </div>
@@ -292,10 +285,6 @@ function App() {
                               <b>{player.card?.DDA}</b>
                             </li>
                           </ul>
-
-                        </div>
-                        <div className='absolute bottom-[5px] left-0 right-0 flex justify-center items-center text-center'>
-                          <h1 className='font-bold italic'>VUT</h1>
                         </div>
                       </div>
                     </div>
