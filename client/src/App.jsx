@@ -1,10 +1,11 @@
 
-import axios from 'axios'
 import Tilt from 'react-parallax-tilt'
+import axios from 'axios'
 import baseUrl from './utils/baseUrl.js'
 import { useState, useEffect, useRef } from 'react'
 import Modal from './components/Modal.jsx'
 import html2canvas from 'html2canvas'
+import CardGrid from './components/cardGrid.jsx'
 
 function App() {
 
@@ -96,7 +97,7 @@ function App() {
             <div>
               <h1 className='text-7xl font-bold italic w-[600px] py-4'>VALORANT ULTIMATE TEAM</h1>
               <p className='w-[400px] mb-4'>
-                Crie sua carta com base no seu desenpenho nas ranqueadas! Evolua sua carta e aumente ainda mais o valor dela no servidor! Crie seu time de cartas e evolua cada vez mais
+                Crie sua carta com base no seu desenpenho nas ranqueadas! Evolua sua carta e aumente ainda mais o valor dela no servidor! Crie seu time, participe de ligas ao vivo e evolua cada vez mais
               </p>
               <div className='p-1 flex justify-start items-center my-6'>
                 <div>
@@ -134,7 +135,7 @@ function App() {
                 href="https://discord.gg/dZeBA4e5BY"
                 target='_blank'
               >
-                <button className='flex justify-center items-center p-1 py-3 border w-[85%] my-2 rounded-md font-semibold text-lg transition hover:scale-[1.035] hover:border-blue-500 hover:text-blue-500 hover:italic'>
+                <button className='flex justify-center items-center p-1 py-3 border w-[85%] my-2 rounded-md font-semibold text-lg transition hover:scale-[1.035] hover:border-[#7289da] hover:bg-[#4864ca] hover:italic'>
                   <p>
                     Juntar-se á Lista de Espera
                   </p>
@@ -220,78 +221,52 @@ function App() {
           </div>
         </div>
         <div className='p-6 mt-14 w-[80%]'>
-          <div className='text-center flex justify-center pb-4'>
-            <h2 className='w-[30%] border rounded-md border-[#ffffff54] bg-[#ffffff1e] text-[#ffffff] font-semibold'>
-              Jogadores que evoluiram suas cartas
+          <div className='text-center flex justify-center pb-4 relative top-14'>
+            <h2 className='w-[25%] border rounded-md border-[#ffffff54] bg-[#151515ce] text-[#ffffff] font-semibold py-1'>
+              Crie sua carta assim como:
             </h2>
           </div>
 
-          <div className='p-4'>
-            <div className='grid grid-flow-col-dense grid-cols-7 justify-center items-center border-4 border-[#dddddd29] bg-[#2a2a2a1f] p-6 rounded-md shadow-black shadow-md'>
-              {
-                alfaUsers.map((player) => (
-                  <Tilt>
-                    <div
-                      style={{
-                        borderColor: player.card?.color,
-                      }}
-                      className={`border-4 h-[400px] w-[260px] rounded-s-xl rounded-e-xl rounded-tr-none rounded-es-none cursor-pointer relative transition hover:scale-[1.04] hover:top-[-80px] hover:left-[-90px] flex justify-center items-center shadow-lg bg-[#101010] card card__glare my-4`}
-                    >
-                      <div
-                        style={{ borderColor: player.card?.color }}
-                        className={`absolute top-6 left-6 border-2 p-2 px-3 rounded-sm rounded-s-xl rounded-e-xl rounded-tr-none rounded-es-none transition hover:scale-[1.1]`}>
-                        <b className='text-xl'>{player?.card?.overall}</b>
-                      </div>
-                      <div className='absolute top-6 right-6 rounded-sm transition hover:scale-[1.1]'>
-                        <img
-                          src={player?.rank?.metadata?.iconUrl}
-                          className='w-[45px] shadow-lg'
-                          alt="ranking do jogador"
-                        />
-                      </div>
-                      <div>
-                        <div className='flex justify-center items-center'>
-                          <img
-                            src={player.agent?.agent?.imageUrl}
-                            alt=""
-                            className='w-[160px] mb-4 mt-14 transition hover:scale-[1.1] rounded-xl'
-                          />
-                        </div>
-                        <h2 className='text-center font-semibold flex justify-center items-center'>
-                          <img src="/flag.png" className='w-[22px] mr-1' alt="" />
-                          {player.name}
-                        </h2>
-                        <div className='flex justify-center items-center mt-1'>
-                          <h3 className='text-center font-light text-sm border border-[#ffffff2a] rounded-sm bg-[#ffffff2a] w-[100px]'>
-                            {player.rank?.metadata?.tierName}
-                          </h3>
-                        </div>
-                        <div>
-                          <ul className='list-none grid grid-cols-2 justify-center items-center text-center relative top-[15px]'>
-                            <li className='mx-2 my-1 px-4 w-[130px] flex items-center' id="rw-tooltip">
-                              <p className='mr-2'>RW</p>
-                              <b>{player.card?.RW}%</b>
-                            </li>
-                            <li className='mx-2 my-1 px-4 w-[130px] flex items-center'>
-                              <p className='mr-2'>KAST</p>
-                              <b>{player.card?.KAST}%</b>
-                            </li>
-                            <li className='mx-2 my-1 px-4 w-[130px] flex items-center'>
-                              <p className='mr-2'>ACS</p>
-                              <b>{player.card?.ACS}</b>
-                            </li>
-                            <li className='mx-2 my-1 px-4 w-[130px] flex items-center'>
-                              <p className='mr-2'>DDΔ</p>
-                              <b>{player.card?.DDA}</b>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
+          <CardGrid alfaUsers={alfaUsers} />
+
+          <div
+            className='py-24 mt-6 flex justify-center items-center flex-col'
+          >
+
+            <div className='p-2 w-[80%]'>
+              <div className=''>
+                <div className='flex justify-center items-center'>
+                  <div>
+                    <h2 className='text-6xl font-bold italic py-4 w-[600px]'>CRIE O SEU ULTIMATE TEAM</h2>
+                    <p className='text-xl w-[600px]'>Evolua sua carta e aumente ainda mais o valor dela no servidor! Crie seu time, participe de ligas ao vivo e evolua cada vez mais. Desbloqueie ou compre pacotes de novos jogadores baseados no mundo real de VALORANT</p>
+                  </div>
+                  <div>
+                    <img src="/packs.png" alt="" />
+                  </div>
+                </div>
+                <div className='flex items-center justify-center'>
+                  <div className='p-4 px-6 border-4 text-center w-[300px] rounded-md mx-2 mt-6 flex items-center justify-center flex-col'>
+                    <div className='grid grid-cols-1 grid-flow-dense gap-3'>
+                      <img className='w-[80px] h-[80px]' src="/emblema-loud.png" alt="" />
                     </div>
-                  </Tilt>
-                ))
-              }
+                    <p className='font-semibold italic text-lg mt-4'>Colecione Emblemas</p>
+                  </div>
+                  <div className='p-4 px-6 border-4 text-center w-[300px] rounded-md mx-2 mt-6 grid grid-cols-1 items-center'>
+                    <div className='flex justify-center'>
+                      <img className='w-[80px] h-[80px]' src="/emblema-league.png" alt="" />
+                    </div>
+                    <p className='font-semibold italic text-lg mt-4'>Jogue Ligas Ao Vivo</p>
+                  </div>
+                  <div className='p-4 px-6 border-4 text-center w-[300px] rounded-md mx-2 mt-6 grid grid-cols-1 items-center'>
+                    <div className='flex justify-center'>
+                      <img className='w-[80px] h-[80px]' src="/coins.png" alt="" />
+                    </div>
+                    <p className='font-semibold italic text-lg mt-4'>Melhore suas Cartas</p>
+                  </div>
+                </div>
+              </div>
             </div>
+
           </div>
 
         </div>

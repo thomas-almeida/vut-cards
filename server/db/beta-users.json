@@ -67,71 +67,6 @@
     "card": {
       "overall": "99",
       "color": "#f53c3d",
-      "RW": "56.3",
-      "KAST": "75.5",
-      "ACS": "307.1",
-      "DDA": "57.9"
-    },
-    "agent": {
-      "agent": {
-        "name": "Iso",
-        "imageUrl": "https://titles.trackercdn.com/valorant-api/agents/0e38b510-41a8-5780-5e8f-568b2a4f2d6c/displayicon.png",
-        "role": "Duelist",
-        "color": "#674BFF",
-        "abilities": {
-          "Ability1": {
-            "name": "Undercut",
-            "imageUrl": "https://titles.trackercdn.com/valorant-api/agents/0e38b510-41a8-5780-5e8f-568b2a4f2d6c/abilities/ability1/displayicon.png"
-          },
-          "Ultimate": {
-            "name": "Kill Contract",
-            "imageUrl": "https://titles.trackercdn.com/valorant-api/agents/0e38b510-41a8-5780-5e8f-568b2a4f2d6c/abilities/ultimate/displayicon.png"
-          },
-          "Ability2": {
-            "name": "Double Tap",
-            "imageUrl": "https://titles.trackercdn.com/valorant-api/agents/0e38b510-41a8-5780-5e8f-568b2a4f2d6c/abilities/ability2/displayicon.png"
-          },
-          "Grenade": {
-            "name": "Contingency",
-            "imageUrl": "https://titles.trackercdn.com/valorant-api/agents/0e38b510-41a8-5780-5e8f-568b2a4f2d6c/abilities/grenade/displayicon.png"
-          }
-        },
-        "schema": "statsv2"
-      },
-      "stats": 62
-    },
-    "name": "ghoul33#2007",
-    "rank": {
-      "rank": 1,
-      "displayName": "Rating",
-      "category": "mmr",
-      "metadata": {
-        "iconUrl": "https://trackercdn.com/cdn/tracker.gg/valorant/icons/tiersv2/27.png",
-        "tierName": "Radiant"
-      },
-      "value": 1025,
-      "displayValue": "1,025",
-      "displayType": "String"
-    },
-    "trackerOv": {
-      "displayName": "Performance Score",
-      "metadata": {
-        "stats": [
-          "roundsWinPct",
-          "kAST",
-          "scorePerRound",
-          "damageDeltaPerRound"
-        ]
-      },
-      "value": 962,
-      "displayValue": "962",
-      "displayType": "Number"
-    }
-  },
-  {
-    "card": {
-      "overall": "99",
-      "color": "#f53c3d",
       "RW": "57.4",
       "KAST": "74.5",
       "ACS": "280.3",
@@ -522,6 +457,408 @@
       },
       "value": 472,
       "displayValue": "472",
+      "displayType": "Number"
+    }
+  },
+  {
+    "card": {
+      "overall": "55",
+      "color": "#e6bc5c",
+      "RW": "48.1",
+      "KAST": "67.7",
+      "ACS": "215.2",
+      "DDA": "1.2"
+    },
+    "agent": {
+      "agent": {
+        "name": "Jett",
+        "imageUrl": "https://titles.trackercdn.com/valorant-api/agents/add6443a-41bd-e414-f6ad-e58d267f4e95/displayicon.png",
+        "role": "Duelist",
+        "color": "#98DCFF",
+        "abilities": {
+          "Ability1": {
+            "name": "Updraft",
+            "imageUrl": "https://titles.trackercdn.com/valorant-api/agents/add6443a-41bd-e414-f6ad-e58d267f4e95/abilities/ability1/displayicon.png"
+          },
+          "Ability2": {
+            "name": "Tailwind",
+            "imageUrl": "https://titles.trackercdn.com/valorant-api/agents/add6443a-41bd-e414-f6ad-e58d267f4e95/abilities/ability2/displayicon.png"
+          },
+          "Grenade": {
+            "name": "Cloudburst",
+            "imageUrl": "https://titles.trackercdn.com/valorant-api/agents/add6443a-41bd-e414-f6ad-e58d267f4e95/abilities/grenade/displayicon.png"
+          },
+          "Ultimate": {
+            "name": "Blade Storm",
+            "imageUrl": "https://titles.trackercdn.com/valorant-api/agents/add6443a-41bd-e414-f6ad-e58d267f4e95/abilities/ultimate/displayicon.png"
+          },
+          "Passive": {
+            "name": "Drift",
+            "imageUrl": "https://titles.trackercdn.com/valorant-api/agents/add6443a-41bd-e414-f6ad-e58d267f4e95/abilities/passive/displayicon.png"
+          }
+        },
+        "schema": "statsv2"
+      },
+      "stats": 99
+    },
+    "name": "RIC o euNuco#000",
+    "rank": {
+      "rank": 697,
+      "displayName": "Rating",
+      "category": "mmr",
+      "metadata": {
+        "iconUrl": "https://trackercdn.com/cdn/tracker.gg/valorant/icons/tiersv2/26.png",
+        "tierName": "Immortal 3"
+      },
+      "value": 231,
+      "displayValue": "231",
+      "displayType": "String"
+    },
+    "trackerOv": {
+      "displayName": "Performance Score",
+      "metadata": {
+        "stats": [
+          "roundsWinPct",
+          "kAST",
+          "scorePerRound",
+          "damageDeltaPerRound"
+        ]
+      },
+      "value": 403,
+      "displayValue": "403",
+      "displayType": "Number"
+    }
+  },
+  {
+    "card": {
+      "overall": "58",
+      "color": "#e6bc5c",
+      "RW": "47.8",
+      "KAST": "71.6",
+      "ACS": "203.4",
+      "DDA": "8.0"
+    },
+    "agent": {
+      "agent": {
+        "name": "Sova",
+        "imageUrl": "https://titles.trackercdn.com/valorant-api/agents/320b2a48-4d9b-a075-30f1-1f93a9b638fa/displayicon.png",
+        "role": "Initiator",
+        "color": "#2688FF",
+        "abilities": {
+          "Ability1": {
+            "name": "Shock Bolt",
+            "imageUrl": "https://titles.trackercdn.com/valorant-api/agents/320b2a48-4d9b-a075-30f1-1f93a9b638fa/abilities/ability1/displayicon.png"
+          },
+          "Ability2": {
+            "name": "Recon Bolt",
+            "imageUrl": "https://titles.trackercdn.com/valorant-api/agents/320b2a48-4d9b-a075-30f1-1f93a9b638fa/abilities/ability2/displayicon.png"
+          },
+          "Grenade": {
+            "name": "Owl Drone",
+            "imageUrl": "https://titles.trackercdn.com/valorant-api/agents/320b2a48-4d9b-a075-30f1-1f93a9b638fa/abilities/grenade/displayicon.png"
+          },
+          "Ultimate": {
+            "name": "Hunter's Fury",
+            "imageUrl": "https://titles.trackercdn.com/valorant-api/agents/320b2a48-4d9b-a075-30f1-1f93a9b638fa/abilities/ultimate/displayicon.png"
+          },
+          "Passive": {
+            "name": "Uncanny Marksman",
+            "imageUrl": null
+          }
+        },
+        "schema": "statsv2"
+      },
+      "stats": 18
+    },
+    "name": "OneTapS#8152",
+    "rank": {
+      "rank": 998,
+      "displayName": "Rating",
+      "category": "mmr",
+      "metadata": {
+        "iconUrl": "https://trackercdn.com/cdn/tracker.gg/valorant/icons/tiersv2/25.png",
+        "tierName": "Immortal 2"
+      },
+      "value": 160,
+      "displayValue": "160",
+      "displayType": "String"
+    },
+    "trackerOv": {
+      "displayName": "Performance Score",
+      "metadata": {
+        "stats": [
+          "roundsWinPct",
+          "kAST",
+          "scorePerRound",
+          "damageDeltaPerRound"
+        ]
+      },
+      "value": 505,
+      "displayValue": "505",
+      "displayType": "Number"
+    }
+  },
+  {
+    "card": {
+      "overall": "64",
+      "color": "#e6bc5c",
+      "RW": "51.4",
+      "KAST": "72.2",
+      "ACS": "217.8",
+      "DDA": "11.8"
+    },
+    "agent": {
+      "agent": {
+        "name": "Jett",
+        "imageUrl": "https://titles.trackercdn.com/valorant-api/agents/add6443a-41bd-e414-f6ad-e58d267f4e95/displayicon.png",
+        "role": "Duelist",
+        "color": "#98DCFF",
+        "abilities": {
+          "Ability1": {
+            "name": "Updraft",
+            "imageUrl": "https://titles.trackercdn.com/valorant-api/agents/add6443a-41bd-e414-f6ad-e58d267f4e95/abilities/ability1/displayicon.png"
+          },
+          "Ability2": {
+            "name": "Tailwind",
+            "imageUrl": "https://titles.trackercdn.com/valorant-api/agents/add6443a-41bd-e414-f6ad-e58d267f4e95/abilities/ability2/displayicon.png"
+          },
+          "Grenade": {
+            "name": "Cloudburst",
+            "imageUrl": "https://titles.trackercdn.com/valorant-api/agents/add6443a-41bd-e414-f6ad-e58d267f4e95/abilities/grenade/displayicon.png"
+          },
+          "Ultimate": {
+            "name": "Blade Storm",
+            "imageUrl": "https://titles.trackercdn.com/valorant-api/agents/add6443a-41bd-e414-f6ad-e58d267f4e95/abilities/ultimate/displayicon.png"
+          },
+          "Passive": {
+            "name": "Drift",
+            "imageUrl": "https://titles.trackercdn.com/valorant-api/agents/add6443a-41bd-e414-f6ad-e58d267f4e95/abilities/passive/displayicon.png"
+          }
+        },
+        "schema": "statsv2"
+      },
+      "stats": 57
+    },
+    "name": "luiz jesus333#alice",
+    "rank": {
+      "rank": 993,
+      "displayName": "Rating",
+      "category": "mmr",
+      "metadata": {
+        "iconUrl": "https://trackercdn.com/cdn/tracker.gg/valorant/icons/tiersv2/25.png",
+        "tierName": "Immortal 2"
+      },
+      "value": 161,
+      "displayValue": "161",
+      "displayType": "String"
+    },
+    "trackerOv": {
+      "displayName": "Performance Score",
+      "metadata": {
+        "stats": [
+          "roundsWinPct",
+          "kAST",
+          "scorePerRound",
+          "damageDeltaPerRound"
+        ]
+      },
+      "value": 669,
+      "displayValue": "669",
+      "displayType": "Number"
+    }
+  },
+  {
+    "card": {
+      "overall": "53",
+      "color": "#e6bc5c",
+      "RW": "51.8",
+      "KAST": "73.1",
+      "ACS": "211.7",
+      "DDA": "-2.5"
+    },
+    "agent": {
+      "agent": {
+        "name": "Gekko",
+        "imageUrl": "https://titles.trackercdn.com/valorant-api/agents/e370fa57-4757-3604-3648-499e1f642d3f/displayicon.png",
+        "role": "Initiator",
+        "color": "#c7f459",
+        "abilities": {
+          "Ability1": {
+            "name": "Wingman",
+            "imageUrl": "https://titles.trackercdn.com/valorant-api/agents/e370fa57-4757-3604-3648-499e1f642d3f/abilities/ability1/displayicon.png"
+          },
+          "Ability2": {
+            "name": "Dizzy",
+            "imageUrl": "https://titles.trackercdn.com/valorant-api/agents/e370fa57-4757-3604-3648-499e1f642d3f/abilities/ability2/displayicon.png"
+          },
+          "Grenade": {
+            "name": "Mosh Pit",
+            "imageUrl": "https://titles.trackercdn.com/valorant-api/agents/e370fa57-4757-3604-3648-499e1f642d3f/abilities/grenade/displayicon.png"
+          },
+          "Ultimate": {
+            "name": "Thrash",
+            "imageUrl": "https://titles.trackercdn.com/valorant-api/agents/e370fa57-4757-3604-3648-499e1f642d3f/abilities/ultimate/displayicon.png"
+          }
+        },
+        "schema": "statsv2"
+      },
+      "stats": 90
+    },
+    "name": "Flame#beta",
+    "rank": {
+      "rank": 992,
+      "displayName": "Rating",
+      "category": "mmr",
+      "metadata": {
+        "iconUrl": "https://trackercdn.com/cdn/tracker.gg/valorant/icons/tiersv2/25.png",
+        "tierName": "Immortal 2"
+      },
+      "value": 161,
+      "displayValue": "161",
+      "displayType": "String"
+    },
+    "trackerOv": {
+      "displayName": "Performance Score",
+      "metadata": {
+        "stats": [
+          "roundsWinPct",
+          "kAST",
+          "scorePerRound",
+          "damageDeltaPerRound"
+        ]
+      },
+      "value": 611,
+      "displayValue": "611",
+      "displayType": "Number"
+    }
+  },
+  {
+    "card": {
+      "overall": "99",
+      "color": "#f53c3d",
+      "RW": "57.5",
+      "KAST": "74.7",
+      "ACS": "283.6",
+      "DDA": "62.5"
+    },
+    "agent": {
+      "agent": {
+        "name": "Iso",
+        "imageUrl": "https://titles.trackercdn.com/valorant-api/agents/0e38b510-41a8-5780-5e8f-568b2a4f2d6c/displayicon.png",
+        "role": "Duelist",
+        "color": "#674BFF",
+        "abilities": {
+          "Ability1": {
+            "name": "Undercut",
+            "imageUrl": "https://titles.trackercdn.com/valorant-api/agents/0e38b510-41a8-5780-5e8f-568b2a4f2d6c/abilities/ability1/displayicon.png"
+          },
+          "Ultimate": {
+            "name": "Kill Contract",
+            "imageUrl": "https://titles.trackercdn.com/valorant-api/agents/0e38b510-41a8-5780-5e8f-568b2a4f2d6c/abilities/ultimate/displayicon.png"
+          },
+          "Ability2": {
+            "name": "Double Tap",
+            "imageUrl": "https://titles.trackercdn.com/valorant-api/agents/0e38b510-41a8-5780-5e8f-568b2a4f2d6c/abilities/ability2/displayicon.png"
+          },
+          "Grenade": {
+            "name": "Contingency",
+            "imageUrl": "https://titles.trackercdn.com/valorant-api/agents/0e38b510-41a8-5780-5e8f-568b2a4f2d6c/abilities/grenade/displayicon.png"
+          }
+        },
+        "schema": "statsv2"
+      },
+      "stats": 31
+    },
+    "name": "Akashi#gabyc",
+    "rank": {
+      "rank": 993,
+      "displayName": "Rating",
+      "category": "mmr",
+      "metadata": {
+        "iconUrl": "https://trackercdn.com/cdn/tracker.gg/valorant/icons/tiersv2/25.png",
+        "tierName": "Immortal 2"
+      },
+      "value": 162,
+      "displayValue": "162",
+      "displayType": "String"
+    },
+    "trackerOv": {
+      "displayName": "Performance Score",
+      "metadata": {
+        "stats": [
+          "roundsWinPct",
+          "kAST",
+          "scorePerRound",
+          "damageDeltaPerRound"
+        ]
+      },
+      "value": 949,
+      "displayValue": "949",
+      "displayType": "Number"
+    }
+  },
+  {
+    "card": {
+      "overall": "53",
+      "color": "#e6bc5c",
+      "RW": "55.5",
+      "KAST": "71.4",
+      "ACS": "195.4",
+      "DDA": "1.7"
+    },
+    "agent": {
+      "agent": {
+        "name": "Cypher",
+        "imageUrl": "https://titles.trackercdn.com/valorant-api/agents/117ed9e3-49f3-6512-3ccf-0cada7e3823b/displayicon.png",
+        "role": "Sentinel",
+        "color": "#EDE8E1",
+        "abilities": {
+          "Ability1": {
+            "name": "Cyber Cage",
+            "imageUrl": "https://titles.trackercdn.com/valorant-api/agents/117ed9e3-49f3-6512-3ccf-0cada7e3823b/abilities/ability1/displayicon.png"
+          },
+          "Ability2": {
+            "name": "Spycam",
+            "imageUrl": "https://titles.trackercdn.com/valorant-api/agents/117ed9e3-49f3-6512-3ccf-0cada7e3823b/abilities/ability2/displayicon.png"
+          },
+          "Grenade": {
+            "name": "Trapwire",
+            "imageUrl": "https://titles.trackercdn.com/valorant-api/agents/117ed9e3-49f3-6512-3ccf-0cada7e3823b/abilities/grenade/displayicon.png"
+          },
+          "Ultimate": {
+            "name": "Neural Theft",
+            "imageUrl": "https://titles.trackercdn.com/valorant-api/agents/117ed9e3-49f3-6512-3ccf-0cada7e3823b/abilities/ultimate/displayicon.png"
+          }
+        },
+        "schema": "statsv2"
+      },
+      "stats": 7
+    },
+    "name": "Rd provocante#01020",
+    "rank": {
+      "rank": 991,
+      "displayName": "Rating",
+      "category": "mmr",
+      "metadata": {
+        "iconUrl": "https://trackercdn.com/cdn/tracker.gg/valorant/icons/tiersv2/25.png",
+        "tierName": "Immortal 2"
+      },
+      "value": 162,
+      "displayValue": "162",
+      "displayType": "String"
+    },
+    "trackerOv": {
+      "displayName": "Performance Score",
+      "metadata": {
+        "stats": [
+          "roundsWinPct",
+          "kAST",
+          "scorePerRound",
+          "damageDeltaPerRound"
+        ]
+      },
+      "value": 557,
+      "displayValue": "557",
       "displayType": "Number"
     }
   }
