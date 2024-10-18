@@ -6,6 +6,7 @@ import { useState, useEffect, useRef } from 'react'
 import Modal from './components/Modal.jsx'
 import html2canvas from 'html2canvas'
 import CardGrid from './components/cardGrid.jsx'
+import Footer from './components/Footer.jsx'
 
 function App() {
 
@@ -135,7 +136,7 @@ function App() {
                 href="https://discord.gg/dZeBA4e5BY"
                 target='_blank'
               >
-                <button className='flex justify-center items-center p-1 py-3 border w-[85%] my-2 rounded-md font-semibold text-lg transition hover:scale-[1.035] hover:border-[#7289da] hover:bg-[#4864ca] hover:italic'>
+                <button className='flex justify-center items-center p-1 py-3 border w-[85%] my-2 rounded-md font-semibold text-lg transition hover:scale-[1.035] hover:border-[#5865f2] hover:bg-[#5865f2] hover:italic'>
                   <p>
                     Juntar-se á Lista de Espera
                   </p>
@@ -241,28 +242,51 @@ function App() {
                     <p className='text-xl w-[600px]'>Evolua sua carta e aumente ainda mais o valor dela no servidor! Crie seu time, participe de ligas ao vivo e evolua cada vez mais. Desbloqueie ou compre pacotes de novos jogadores baseados no mundo real de VALORANT</p>
                   </div>
                   <div>
-                    <img src="/packs.png" alt="" />
+                    <img
+                      src="/packs.png"
+                      className='h-[300px]'
+                      alt="" />
                   </div>
                 </div>
-                <div className='flex items-center justify-center'>
-                  <div className='p-4 px-6 border-4 text-center w-[300px] rounded-md mx-2 mt-6 flex items-center justify-center flex-col'>
-                    <div className='grid grid-cols-1 grid-flow-dense gap-3'>
-                      <img className='w-[80px] h-[80px]' src="/emblema-loud.png" alt="" />
-                    </div>
-                    <p className='font-semibold italic text-lg mt-4'>Colecione Emblemas</p>
+                <div className='flex justify-center items-center'>
+                  <div className='flex justify-center items-center'>
+                    <Tilt>
+                      <img src="/screen-1.png" className='' alt="" />
+                    </Tilt>
                   </div>
-                  <div className='p-4 px-6 border-4 text-center w-[300px] rounded-md mx-2 mt-6 grid grid-cols-1 items-center'>
-                    <div className='flex justify-center'>
-                      <img className='w-[80px] h-[80px]' src="/emblema-league.png" alt="" />
+                  <div className='flex items-center justify-center flex-col'>
+                    <div className='p-1 border-4 border-[#3d3a4d] text-center w-[200px] rounded-md mx-1 m-2 flex items-center justify-center flex-col'>
+                      <div className='grid grid-cols-1 grid-flow-dense gap-3'>
+                        <img className='w-[80px] h-[70px]' src="/emblema-loud.png" alt="" />
+                      </div>
+                      <p className='font-semibold italic text-lg mt-4'>Colecione Emblemas</p>
                     </div>
-                    <p className='font-semibold italic text-lg mt-4'>Jogue Ligas Ao Vivo</p>
-                  </div>
-                  <div className='p-4 px-6 border-4 text-center w-[300px] rounded-md mx-2 mt-6 grid grid-cols-1 items-center'>
-                    <div className='flex justify-center'>
-                      <img className='w-[80px] h-[80px]' src="/coins.png" alt="" />
+                    <div className='p-1 border-4 border-[#3d3a4d] text-center w-[200px] rounded-md mx-1 m-2 grid grid-cols-1 items-center'>
+                      <div className='flex justify-center'>
+                        <img className='w-[80px] h-[70px]' src="/emblema-league.png" alt="" />
+                      </div>
+                      <p className='font-semibold italic text-lg mt-4'>Jogue Ligas Ao Vivo</p>
                     </div>
-                    <p className='font-semibold italic text-lg mt-4'>Melhore suas Cartas</p>
+                    <div className='p-1 border-4 border-[#3d3a4d] text-center w-[200px] rounded-md mx-1 m-2 grid grid-cols-1 items-center'>
+                      <div className='flex justify-center'>
+                        <img className='w-[80px] h-[70px]' src="/coins.png" alt="" />
+                      </div>
+                      <p className='font-semibold italic text-lg mt-4'>Melhore suas Cartas</p>
+                    </div>
                   </div>
+                </div>
+                <div className='flex justify-center items-center'>
+                  <a
+                    href="https://discord.gg/dZeBA4e5BY"
+                    target='_blank'
+                  >
+                    <button className='flex justify-center items-center p-1 px-4 py-3 border w-[100%] my-2 rounded-md font-semibold text-lg transition hover:scale-[1.035] hover:border-[#5865f2] hover:bg-[#5865f2] hover:italic'>
+                      <p>
+                        Juntar-se á Lista de Espera
+                      </p>
+                      <img src="/arrow.png" className='w-[12px] ml-2' alt="" />
+                    </button>
+                  </a>
                 </div>
               </div>
             </div>
@@ -275,6 +299,7 @@ function App() {
           closeModal={closeModal}
         />
       </main>
+      <Footer />
     </>
   )
 }
