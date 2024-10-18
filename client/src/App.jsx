@@ -92,11 +92,11 @@ function App() {
   return (
     <>
       <main className='flex justify-center flex-col items-center bg-[#141414] text-white'>
-        <div className='w-[80%] mt-28'>
+        <div className='lg:w-[80%] mt-28 md:w-[90%]'>
           <h1 className='font-extrabold italic text-md text-center mb-12'>VUT</h1>
-          <div className='flex justify-center items-center'>
+          <div className='flex justify-center items-center flex-wrap'>
             <div>
-              <h1 className='text-7xl font-bold italic w-[600px] py-4'>VALORANT ULTIMATE TEAM</h1>
+              <h1 className='lg:text-7xl font-bold italic lg:w-[600px] py-4 md:w-[400px] md:text-5xl'>VALORANT ULTIMATE TEAM</h1>
               <p className='w-[400px] mb-4'>
                 Crie sua carta com base no seu desenpenho nas ranqueadas! Evolua sua carta e aumente ainda mais o valor dela no servidor! Crie seu time, participe de ligas ao vivo e evolua cada vez mais
               </p>
@@ -221,9 +221,9 @@ function App() {
             </div>
           </div>
         </div>
-        <div className='p-6 mt-14 w-[80%]'>
+        <div className='p-6 mt-14 w-[80%] md:w-[90%]'>
           <div className='text-center flex justify-center pb-4 relative top-14'>
-            <h2 className='w-[25%] border rounded-md border-[#ffffff54] bg-[#151515ce] text-[#ffffff] font-semibold py-1'>
+            <h2 className='w-[25%] border rounded-md border-[#ffffff54] bg-[#151515ce] text-[#ffffff] font-semibold py-1 md:w-[50%]'>
               Crie sua carta assim como:
             </h2>
           </div>
@@ -251,7 +251,7 @@ function App() {
                 <div className='flex justify-center items-center'>
                   <div className='flex justify-center items-center'>
                     <Tilt>
-                      <img src="/screen-1.png" className='' alt="" />
+                      <img src="/screen-1.png" className='lg:h-[550px]' alt="" />
                     </Tilt>
                   </div>
                   <div className='flex items-center justify-center flex-col'>
