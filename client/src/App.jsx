@@ -2,9 +2,10 @@
 import Tilt from 'react-parallax-tilt'
 import axios from 'axios'
 import baseUrl from './utils/baseUrl.js'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import Modal from './components/Modal.jsx'
-import html2canvas from 'html2canvas'
+import LazyLoad from 'react-lazyload'
+import domtoimage from 'dom-to-image'
 import CardGrid from './components/cardGrid.jsx'
 import Footer from './components/Footer.jsx'
 
@@ -69,18 +70,21 @@ function App() {
     setAlfaUsers(response.data?.players)
   }
 
-  async function saveCard() {
 
-    const element = cardRef.current
+  const saveCard = useCallback(() => {
 
-    html2canvas(element).then(canvas => {
-      const imgData = canvas.toDataURL('image/png')
-      const link = document.createElement('a')
-      link.href = imgData
-      link.download = 'vut-card.png'
-      link.click()
-    })
-  }
+    domtoimage.toPng(cardRef.current)
+      .then((dataUrl) => {
+        const link = document.createElement('a')
+        link.href = dataUrl
+        link.download = 'vut-card.png'
+        link.click()
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+
+  }, [cardRef])
 
 
   useEffect(() => {
@@ -94,7 +98,7 @@ function App() {
       <main className='flex justify-center flex-col items-center bg-[#141414] text-white'>
         <div className='lg:w-[80%] mt-28 md:w-[90%]'>
           <h1 className='font-extrabold italic text-md text-center mb-12'>VUT</h1>
-          <div className='flex justify-center items-center flex-wrap'>
+          <div className='flex justify-center items-center'>
             <div>
               <h1 className='lg:text-7xl font-bold italic lg:w-[600px] py-4 md:w-[400px] md:text-5xl'>VALORANT ULTIMATE TEAM</h1>
               <p className='w-[400px] mb-4'>
@@ -154,19 +158,21 @@ function App() {
                     MozBoxShadow: '0px 0px 136px 1px 0px 0px 136px 1px',
                     boxShadow: '0px 0px 136px 1px rgba(187,240,224,0.21)'
                   }}
-                  className={`border-4 h-[460px] w-[300px] rounded-s-xl rounded-e-xl rounded-tr-none rounded-es-none cursor-pointer transition hover:scale-[1.08] relative flex justify-center items-center shadow-lg bg-[#10101091] card card__glare`}
+                  className={`border-4 h-[460px] w-[300px] rounded-s-xl rounded-e-xl rounded-tr-none rounded-es-none cursor-pointer transition hover:scale-[1.08] relative flex justify-center items-center shadow-lg bg-[#101010] card card__glare`}
                 >
                   <div
                     style={{ borderColor: !cardStats?.card?.color ? '#f53c3d' : cardStats?.card?.color }}
-                    className={`absolute top-6 left-6 border-2 p-2 px-3 rounded-sm rounded-s-xl rounded-e-xl rounded-tr-none rounded-es-none transition hover:scale-[1.1]`}>
-                    <b className='text-xl'>{!cardStats?.card?.overall ? ' ?? ' : cardStats?.card?.overall}</b>
+                    className={`absolute top-6 left-6 border-2 p-2 px-3 rounded-sm rounded-s-xl rounded-e-xl rounded-tr-none rounded-es-none transition hover:scale-[1.1] flex justify-center items-center`}>
+                    <p className='text-xl font-bold'>{!cardStats?.card?.overall ? ' ?? ' : cardStats?.card?.overall}</p>
                   </div>
                   <div className='absolute top-6 right-6 rounded-sm transition hover:scale-[1.1]'>
-                    <img
-                      src={!cardStats?.rank?.metadata?.iconUrl ? '/rank-radiant.png' : cardStats?.rank?.metadata?.iconUrl}
-                      className='w-[45px] shadow-lg'
-                      alt="ranking do jogador"
-                    />
+                    <LazyLoad>
+                      <img
+                        src={!cardStats?.rank?.iconId ? '/rank-radiant.png' : `/images/${cardStats?.rank?.iconId}.png`}
+                        className='w-[45px] shadow-lg'
+                        alt="ranking do jogador"
+                      />
+                    </LazyLoad>
                   </div>
                   <div>
                     <div className='flex justify-center items-center'>
@@ -182,7 +188,7 @@ function App() {
                     </h2>
                     <div className='flex justify-center items-center mt-1'>
                       <h3 className='text-center font-light text-sm border border-[#ffffff2a] rounded-sm bg-[#ffffff2a] w-[30%]'>
-                        {!cardStats?.rank?.metadata?.tierName ? 'Rank' : cardStats?.rank?.metadata?.tierName}
+                        {!cardStats?.rank?.data?.metadata?.tierName ? 'Rank' : cardStats?.rank?.data?.metadata?.tierName}
                       </h3>
                     </div>
                     <div className={!cardStats?.card ? 'hidden' : ''}>
@@ -214,7 +220,7 @@ function App() {
               </Tilt>
               <p
                 className={cardStats?.card ? `font-bold py-2 cursor-pointer transition hover:scale-[1.03] mt-5 text-center rounded-md border-2 border-[#ffffff54] bg-[#ffffff54] text-[#ffffff] ` : 'hidden'}
-                onClick={() => saveCard()}
+                onClick={saveCard}
               >
                 Salvar Carta
               </p>

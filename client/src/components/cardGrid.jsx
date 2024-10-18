@@ -4,7 +4,7 @@ export default function CardGrid({ alfaUsers }) {
 
     return (
         <div className='p-8'>
-            <div className={`grid lg:grid-cols-8 lg:overflow-auto lg:h-auto justify-center items-center border-4 border-[#dddddd29] bg-[#2a2a2a1f] p-6 rounded-md shadow-black shadow-md md:grid-cols-3 md:overflow-y-auto md:h-[500px]`}>
+            <div className={`grid lg:grid-cols-7 lg:h-auto overflow-auto justify-center items-center border-4 border-[#dddddd29] bg-[#2a2a2a1f] p-6 rounded-md shadow-black shadow-md md:grid-cols-3 md:h-[500px]`}>
                 {
                     alfaUsers.map((player) => (
                         <Tilt>
@@ -21,7 +21,7 @@ export default function CardGrid({ alfaUsers }) {
                                 </div>
                                 <div className='absolute top-6 right-6 rounded-sm transition hover:scale-[1.1]'>
                                     <img
-                                        src={player?.rank?.metadata?.iconUrl}
+                                        src={`/images/${player?.rank?.iconId}.png`}
                                         className='w-[45px] shadow-lg'
                                         alt="ranking do jogador"
                                     />
@@ -40,7 +40,7 @@ export default function CardGrid({ alfaUsers }) {
                                     </h2>
                                     <div className='flex justify-center items-center mt-1'>
                                         <h3 className='text-center font-light text-sm border border-[#ffffff2a] rounded-sm bg-[#ffffff2a] w-[100px]'>
-                                            {player.rank?.metadata?.tierName}
+                                            {player.rank?.data?.metadata?.tierName}
                                         </h3>
                                     </div>
                                     <div className='md:hidden'>

@@ -44,6 +44,13 @@ function getAgentProfile(segment) {
     return agentsFounded
 }
 
+function extractRankId(url) {
+    const parts = url.split('/')
+    const lastPart = parts[parts.length - 1]
+    const [id] = lastPart.split('.')
+    return id
+}
+
 function getMostPlayedAgent(agents) {
 
     let mostPlayedAgent = null
@@ -122,7 +129,10 @@ async function getUserTrackerData(req, res) {
             card: card,
             agent: getMostPlayedAgent(agents),
             name: JSON.parse(preContent)?.data?.platformInfo?.platformUserHandle,
-            rank: cardData?.stats?.rank,
+            rank: {
+                data: cardData?.stats?.rank,
+                iconId: extractRankId(cardData?.stats?.rank?.metadata?.iconUrl)
+            },
             trackerOv: cardData?.stats?.trnPerformanceScore,
         }
 
