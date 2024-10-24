@@ -142,7 +142,7 @@ function App() {
               >
                 <button className='flex justify-center items-center p-1 py-3 border w-[85%] my-2 rounded-md font-semibold text-lg transition hover:scale-[1.035] hover:border-[#5865f2] hover:bg-[#5865f2] hover:italic'>
                   <p>
-                    Juntar-se á Lista de Espera
+                    Entre na comunidade
                   </p>
                   <img src="/arrow.png" className='w-[12px] ml-2' alt="" />
                 </button>
@@ -162,8 +162,8 @@ function App() {
                 >
                   <div
                     style={{ borderColor: !cardStats?.card?.color ? '#f53c3d' : cardStats?.card?.color }}
-                    className={`absolute top-6 left-6 border-2 p-2 px-3 rounded-sm rounded-s-xl rounded-e-xl rounded-tr-none rounded-es-none transition hover:scale-[1.1] flex justify-center items-center`}>
-                    <p className='text-xl font-bold'>{!cardStats?.card?.overall ? ' ?? ' : cardStats?.card?.overall}</p>
+                    className={`absolute top-6 left-6 border-4 p-2 px-3 rounded-sm rounded-s-xl rounded-e-xl rounded-tr-none rounded-es-none transition hover:scale-[1.1] flex justify-center items-center`}>
+                    <p className='text-xl font-bold'>{!cardStats?.card?.overall ? ' 98 ' : cardStats?.card?.overall}</p>
                   </div>
                   <div className='absolute top-6 right-6 rounded-sm transition hover:scale-[1.1]'>
                     <LazyLoad>
@@ -173,22 +173,27 @@ function App() {
                         alt="ranking do jogador"
                       />
                     </LazyLoad>
+                    <img
+                      src={!cardStats?.agent?.agent?.imageUrl ? '/jett.png' : cardStats?.agent?.agent?.imageUrl}
+                      alt=""
+                      className='w-[45px] mt-4 transition hover:scale-[1.1] rounded-xl'
+                    />
                   </div>
                   <div>
                     <div className='flex justify-center items-center'>
                       <img
-                        src={!cardStats?.agent?.agent?.imageUrl ? '/placeholder.png' : cardStats?.agent?.agent?.imageUrl}
+                        src={!cardStats?.agent?.agent?.imageUrl ? '/aspas.png' : '/default-player.png'}
                         alt=""
                         className='w-[160px] mb-4 mt-14 transition hover:scale-[1.1] rounded-xl'
                       />
                     </div>
                     <h2 className='text-center font-semibold flex justify-center items-center'>
                       <img src="/flag.png" className='w-[22px] mr-1' alt="" />
-                      {!cardStats?.name ? 'Seu Nome Aqui' : cardStats?.name}
+                      {!cardStats?.name ? 'Aspas' : cardStats?.name}
                     </h2>
                     <div className='flex justify-center items-center mt-1'>
-                      <h3 className='text-center font-light text-sm border border-[#ffffff2a] rounded-sm bg-[#ffffff2a] w-[30%]'>
-                        {!cardStats?.rank?.data?.metadata?.tierName ? 'Rank' : cardStats?.rank?.data?.metadata?.tierName}
+                      <h3 className='text-center font-light text-sm border border-[#ffffff2a] rounded-sm bg-[#ffffff2a] w-[40%] px-2'>
+                        {!cardStats?.rank?.data?.metadata?.tierName ? 'Duelista' : cardStats?.rank?.data?.metadata?.tierName}
                       </h3>
                     </div>
                     <div className={!cardStats?.card ? 'hidden' : ''}>
@@ -222,7 +227,7 @@ function App() {
                 className={cardStats?.card ? `font-bold py-2 cursor-pointer transition hover:scale-[1.03] mt-5 text-center rounded-md border-2 border-[#ffffff54] bg-[#ffffff54] text-[#ffffff] ` : 'hidden'}
                 onClick={saveCard}
               >
-                Salvar Carta
+                Criar Minha Carta
               </p>
             </div>
           </div>
@@ -230,7 +235,7 @@ function App() {
         <div className='p-6 mt-14 w-[80%] md:w-[90%]'>
           <div className='text-center flex justify-center pb-4 relative top-14'>
             <h2 className='w-[25%] border rounded-md border-[#ffffff54] bg-[#151515ce] text-[#ffffff] font-semibold py-1 md:w-[50%]'>
-              Crie sua carta assim como:
+              Seja um dos nossos Apoiadores
             </h2>
           </div>
 
