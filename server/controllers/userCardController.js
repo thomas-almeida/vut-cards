@@ -13,6 +13,8 @@ const dbPath = path.join(__dirname, '..', 'db', 'beta-users.json')
 
 function calcOverall(RW, KAST, ACS, DDA) {
 
+    console.log(RW,KAST,ACS,DDA)
+
     let overall = 0
     let RwCalc = RW * 0.10
     let KASTCalc = KAST * 0.10
@@ -42,6 +44,29 @@ function getAgentProfile(segment) {
     })
 
     return agentsFounded
+}
+
+function estimateCardValue(overall) {
+    
+    let coinUnit = 0
+    let cardValue = 0
+
+    if (overall < 40) {
+        coinUnit = 4
+    } else if (overall >= 40 && overall < 59) {
+        coinUnit = 6
+    } else if (overall >= 50 && overall < 69) {
+        coinUnit = 8
+    } else if (overall >= 69 && overall < 79) {
+        coinUnit = 12
+    } else if (overall >= 79 && overall < 89) {
+        coinUnit = 15
+    } else if (overall >= 89) {
+        coinUnit = 18
+    }
+
+    cardValue = overall * coinUnit
+    return cardValue
 }
 
 function extractRankId(url) {
@@ -112,14 +137,19 @@ async function getUserTrackerData(req, res) {
         const actualACS = cardData?.stats?.scorePerRound?.value?.toFixed(1)
         const actualDDA = cardData?.stats?.damageDeltaPerRound?.value?.toFixed(1)
 
+        const cardOverall = calcOverall(actualRW, actualKAST, actualACS, actualDDA)
+
         const card = {
-            overall: calcOverall(actualRW, actualKAST, actualACS, actualDDA),
+            overall: cardOverall,
             color: colorizeCard(calcOverall(actualRW, actualKAST, actualACS, actualDDA)),
             RW: actualRW,
             KAST: actualKAST,
             ACS: actualACS,
-            DDA: actualDDA
+            DDA: actualDDA,
+            value: estimateCardValue(cardOverall)
         }
+
+        console.log(card)
 
         const agents = getAgentProfile(JSON.parse(preContent)?.data?.segments)
 

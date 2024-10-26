@@ -2,6 +2,7 @@
 import Tilt from 'react-parallax-tilt'
 import axios from 'axios'
 import baseUrl from './utils/baseUrl.js'
+import translate from './utils/translate.js'
 import { useState, useEffect, useRef, useCallback } from 'react'
 import Modal from './components/Modal.jsx'
 import LazyLoad from 'react-lazyload'
@@ -14,7 +15,6 @@ function App() {
   const [cardStats, setCardStats] = useState({})
   const [name, setName] = useState('')
   const [code, setCode] = useState('')
-  const [currentColor, setCurrentColor] = useState('')
   const [isModalVisible, setIsModalVisible] = useState(false)
   const [isFetching, setIsFetching] = useState(false)
   const [alfaUsers, setAlfaUsers] = useState([])
@@ -102,7 +102,7 @@ function App() {
             <div>
               <h1 className='lg:text-7xl font-bold italic lg:w-[600px] py-4 md:w-[400px] md:text-5xl'>VALORANT ULTIMATE TEAM</h1>
               <p className='w-[400px] mb-4'>
-                Crie sua carta com base no seu desenpenho nas ranqueadas! Evolua sua carta e aumente ainda mais o valor dela no servidor! Crie seu time, participe de ligas ao vivo e evolua cada vez mais
+                Crie sua carta com base no seu <b>desenpenho nas ranqueadas</b>. Evolua sua carta e aumente ainda mais o valor dela no servidor! <b>Crie seu time</b>, participe de <b>Ligas ao vivo</b> e evolua cada vez mais
               </p>
               <div className='p-1 flex justify-start items-center my-6'>
                 <div>
@@ -142,7 +142,7 @@ function App() {
               >
                 <button className='flex justify-center items-center p-1 py-3 border w-[85%] my-2 rounded-md font-semibold text-lg transition hover:scale-[1.035] hover:border-[#5865f2] hover:bg-[#5865f2] hover:italic'>
                   <p>
-                    Entre na comunidade
+                    Fique por dentro das atualizações
                   </p>
                   <img src="/arrow.png" className='w-[12px] ml-2' alt="" />
                 </button>
@@ -156,7 +156,7 @@ function App() {
                     borderColor: !cardStats?.card?.color ? '#f53c3d' : cardStats?.card?.color,
                     WebkitBoxShadow: '0px 0px 136px 1px rgba(187,240,224,0.21)',
                     MozBoxShadow: '0px 0px 136px 1px 0px 0px 136px 1px',
-                    boxShadow: '0px 0px 136px 1px rgba(187,240,224,0.21)'
+                    boxShadow: '0px 0px 136px 1px rgba(187,240,224,0.21)',
                   }}
                   className={`border-4 h-[460px] w-[300px] rounded-s-xl rounded-e-xl rounded-tr-none rounded-es-none cursor-pointer transition hover:scale-[1.08] relative flex justify-center items-center shadow-lg bg-[#101010] card card__glare`}
                 >
@@ -186,14 +186,20 @@ function App() {
                         alt=""
                         className='w-[160px] mb-4 mt-14 transition hover:scale-[1.1] rounded-xl'
                       />
+                      <p 
+                        className={!cardStats?.card ? 'hidden' : `absolute top-[53%] left-[60%] shadow-xl rounded-sm`}>⭐</p>
                     </div>
                     <h2 className='text-center font-semibold flex justify-center items-center'>
                       <img src="/flag.png" className='w-[22px] mr-1' alt="" />
-                      {!cardStats?.name ? 'Aspas' : cardStats?.name}
+                      <p>{!cardStats?.name ? 'Aspas' : cardStats?.name}</p>
+                      <div className='flex justify-center items-center ml-2'>
+                        <img src="/vc-icon.png" className='w-[15px] mr-1' alt="" />
+                        <p className='text-[#f2e801] italic'>{!cardStats?.card?.value ? '9999' : cardStats?.card?.value}</p>
+                      </div>
                     </h2>
                     <div className='flex justify-center items-center mt-1'>
                       <h3 className='text-center font-light text-sm border border-[#ffffff2a] rounded-sm bg-[#ffffff2a] w-[40%] px-2'>
-                        {!cardStats?.rank?.data?.metadata?.tierName ? 'Duelista' : cardStats?.rank?.data?.metadata?.tierName}
+                        {!cardStats?.agent?.agent?.role ? 'Duelista' : translate.translateRole(cardStats?.agent?.agent?.role)}
                       </h3>
                     </div>
                     <div className={!cardStats?.card ? 'hidden' : ''}>
@@ -224,7 +230,7 @@ function App() {
                 </div>
               </Tilt>
               <p
-                className={cardStats?.card ? `font-bold py-2 cursor-pointer transition hover:scale-[1.03] mt-5 text-center rounded-md border-2 border-[#ffffff54] bg-[#ffffff54] text-[#ffffff] ` : 'hidden'}
+                className={cardStats?.card ? `font-bold py-2 cursor-pointer transition hover:scale-[1.03] mt-5 text-center rounded-md border-4 bg-[#FFF] text-[#1A1A1A] hover:text-[${cardStats?.card?.color}] ` : 'hidden'}
                 onClick={saveCard}
               >
                 Criar Minha Carta
@@ -235,7 +241,7 @@ function App() {
         <div className='p-6 mt-14 w-[80%] md:w-[90%]'>
           <div className='text-center flex justify-center pb-4 relative top-14'>
             <h2 className='w-[25%] border rounded-md border-[#ffffff54] bg-[#151515ce] text-[#ffffff] font-semibold py-1 md:w-[50%]'>
-              Seja um dos nossos Apoiadores
+              Seja também um dos nossos Apoiadores ⭐
             </h2>
           </div>
 
